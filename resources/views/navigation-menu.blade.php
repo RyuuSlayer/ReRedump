@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white dark:bg-discord-400 border-b border-gray-100 dark:border-discord-400">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -21,13 +21,13 @@
                     <x-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')">
                         {{ __('Downloads') }}
                     </x-nav-link>
-                    <a href="http://wiki.redump.org/index.php?title=Dumping_Guides" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out">
+                    <a href="http://wiki.redump.org/index.php?title=Dumping_Guides" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-discord-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 dark:focus:border-discord-300 transition duration-150 ease-in-out" target="_blank" rel="noopener noreferrer">
                         {{ __('Guide') }}
                     </a>
-                    <a href="http://wiki.redump.org/index.php?title=Main_Page" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out">
+                    <a href="http://wiki.redump.org/index.php?title=Main_Page" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-discord-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 dark:focus:border-discord-300 transition duration-150 ease-in-out" target="_blank" rel="noopener noreferrer">
                         {{ __('Wiki') }}
                     </a>
-                    <a href="http://forum.redump.org/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out">
+                    <a href="http://forum.redump.org/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-discord-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 dark:focus:border-discord-300 transition duration-150 ease-in-out" target="_blank" rel="noopener noreferrer">
                         {{ __('Forum') }}
                     </a>
                 </div>
@@ -35,26 +35,31 @@
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 @auth
-                    <!-- Teams Dropdown -->
-                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                        <div class="ms-3 relative">
-                            <x-dropdown align="right" width="60">
-                                <x-slot name="trigger">
-                                    <span class="inline-flex rounded-md">
-                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
-                                            {{ Auth::user()->currentTeam->name }}
+                    <div class="ms-3 relative flex items-center">
+                        <a href="https://github.com/RyuuSlayer/ReRedump" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-2 text-sm text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <!-- Teams Dropdown -->
+                        @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                            <div class="ms-3 relative">
+                                <x-dropdown align="right" width="60">
+                                    <x-slot name="trigger">
+                                        <span class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:focus:bg-discord-500 active:bg-gray-50 dark:active:bg-discord-500 transition ease-in-out duration-150">
+                                                {{ Auth::user()->currentTeam->name }}
 
-                                            <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                            </svg>
-                                        </button>
-                                    </span>
-                                </x-slot>
+                                                <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </x-slot>
 
-                                <x-slot name="content">
-                                    <div class="w-60">
+                                    <x-slot name="content">
                                         <!-- Team Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                                             {{ __('Manage Team') }}
                                         </div>
 
@@ -71,9 +76,9 @@
 
                                         <!-- Team Switcher -->
                                         @if (Auth::user()->allTeams()->count() > 1)
-                                            <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                                            <div class="border-t border-gray-200 dark:border-discord-400"></div>
 
-                                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                            <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                                                 {{ __('Switch Teams') }}
                                             </div>
 
@@ -81,74 +86,79 @@
                                                 <x-switchable-team :team="$team" />
                                             @endforeach
                                         @endif
+                                    </x-slot>
+                                </x-dropdown>
+                            </div>
+                        @endif
+
+                        <!-- Settings Dropdown -->
+                        <div class="ms-3 relative">
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 dark:focus:border-discord-300 transition">
+                                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                        </button>
+                                    @else
+                                        <span class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-discord-300 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:hover:bg-discord-200 dark:focus:bg-discord-200 active:bg-gray-50 dark:active:bg-discord-200 transition ease-in-out duration-150">
+                                                {{ Auth::user()->name }}
+
+                                                <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    @endif
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <!-- Account Management -->
+                                    <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
+                                        {{ __('Manage Account') }}
                                     </div>
+
+                                    <x-dropdown-link href="{{ route('profile.show') }}">
+                                        {{ __('Profile') }}
+                                    </x-dropdown-link>
+
+                                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                        <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                                            {{ __('API Tokens') }}
+                                        </x-dropdown-link>
+                                    @endif
+
+                                    <div class="border-t border-gray-200 dark:border-discord-400"></div>
+
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}" x-data>
+                                        @csrf
+
+                                        <x-dropdown-link href="{{ route('logout') }}"
+                                                     @click.prevent="$root.submit();">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </form>
                                 </x-slot>
                             </x-dropdown>
                         </div>
-                    @endif
-
-                    <!-- Settings Dropdown -->
-                    <div class="ms-3 relative">
-                        <x-dropdown align="right" width="48">
-                            <x-slot name="trigger">
-                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                    <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                    </button>
-                                @else
-                                    <span class="inline-flex rounded-md">
-                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
-                                            {{ Auth::user()->name }}
-
-                                            <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                            </svg>
-                                        </button>
-                                    </span>
-                                @endif
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <!-- Account Management -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Account') }}
-                                </div>
-
-                                <x-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
-                                </x-dropdown-link>
-
-                                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                    <x-dropdown-link href="{{ route('api-tokens.index') }}">
-                                        {{ __('API Tokens') }}
-                                    </x-dropdown-link>
-                                @endif
-
-                                <div class="border-t border-gray-200 dark:border-gray-600"></div>
-
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}" x-data>
-                                    @csrf
-
-                                    <x-dropdown-link href="{{ route('logout') }}"
-                                                @click.prevent="$root.submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
-                            </x-slot>
-                        </x-dropdown>
                     </div>
                 @else
                     <div class="ms-3 relative">
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-300 underline">Log in</a>
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-300 underline">Register</a>
+                        <a href="https://github.com/RyuuSlayer/ReRedump" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-2 text-sm text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-500 dark:text-gray-300 underline">Log in</a>
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-500 dark:text-gray-300 underline">Register</a>
                     </div>
                 @endauth
             </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-discord-400 focus:outline-none focus:bg-gray-100 dark:focus:bg-discord-400 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -170,20 +180,20 @@
             <x-responsive-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')">
                 {{ __('Downloads') }}
             </x-responsive-nav-link>
-            <a href="http://wiki.redump.org/index.php?title=Dumping_Guides" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300">
+            <a href="http://wiki.redump.org/index.php?title=Dumping_Guides" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200" target="_blank" rel="noopener noreferrer">
                 {{ __('Guide') }}
             </a>
-            <a href="http://wiki.redump.org/index.php?title=Main_Page" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300">
+            <a href="http://wiki.redump.org/index.php?title=Main_Page" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200" target="_blank" rel="noopener noreferrer">
                 {{ __('Wiki') }}
             </a>
-            <a href="http://forum.redump.org/" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300">
+            <a href="http://forum.redump.org/" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200" target="_blank" rel="noopener noreferrer">
                 {{ __('Forum') }}
             </a>
         </div>
 
         @auth
             <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-discord-400">
                 <div class="flex items-center px-4">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <div class="shrink-0 me-3">
@@ -221,9 +231,9 @@
 
                     <!-- Team Management -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                        <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                        <div class="border-t border-gray-200 dark:border-discord-400"></div>
 
-                        <div class="block px-4 py-2 text-xs text-gray-400">
+                        <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                             {{ __('Manage Team') }}
                         </div>
 
@@ -240,9 +250,9 @@
 
                         <!-- Team Switcher -->
                         @if (Auth::user()->allTeams()->count() > 1)
-                            <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                            <div class="border-t border-gray-200 dark:border-discord-400"></div>
 
-                            <div class="block px-4 py-2 text-xs text-gray-400">
+                            <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                                 {{ __('Switch Teams') }}
                             </div>
 
@@ -254,7 +264,7 @@
                 </div>
             </div>
         @else
-            <div class="py-1 border-t border-gray-200 dark:border-gray-600">
+            <div class="py-1 border-t border-gray-200 dark:border-discord-400">
                 <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                     {{ __('Login') }}
                 </x-responsive-nav-link>

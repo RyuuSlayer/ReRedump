@@ -1,20 +1,16 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700', 'dropdownClasses' => ''])
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-discord-400', 'dropdownClasses' => ''])
 
 @php
 switch ($align) {
     case 'left':
-        $alignmentClasses = 'ltr:origin-top-left rtl:origin-top-right start-0';
+        $alignmentClasses = 'origin-top-left left-0';
         break;
     case 'top':
         $alignmentClasses = 'origin-top';
         break;
-    case 'none':
-    case 'false':
-        $alignmentClasses = '';
-        break;
     case 'right':
     default:
-        $alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
+        $alignmentClasses = 'origin-top-right right-0';
         break;
 }
 
@@ -25,7 +21,7 @@ switch ($width) {
 }
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
