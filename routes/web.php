@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('main');
+})->name('main');
+
+Route::get('/discs', function () {
+    return view('discs');
+})->name('discs');
+
+Route::get('/downloads', function () {
+    return view('downloads');
+})->name('downloads');
 
 Route::middleware([
     'auth:sanctum',

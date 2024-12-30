@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
+    class="{{ session('darkMode') === true ? 'dark' : '' }}"
+>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,5 +43,30 @@
         @stack('modals')
 
         @livewireScripts
+        
+        <script>
+            document.addEventListener('livewire:initialized', () => {
+                Livewire.on('themeUpdated', () => {
+                    window.location.reload();
+                });
+            });
+
+            // Handle system theme preference
+            if ('{{ session('theme') }}' === 'system') {
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
