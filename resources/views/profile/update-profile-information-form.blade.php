@@ -38,12 +38,12 @@
                     </span>
                 </div>
 
-                <x-secondary-button class="mt-2 me-2 dark:bg-discord-300 dark:hover:bg-discord-200" type="button" x-on:click.prevent="$refs.photo.click()">
+                <x-secondary-button class="mt-2 me-2 dark:bg-theme-d-300 dark:hover:bg-theme-d-200" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
                 </x-secondary-button>
 
                 @if ($this->user->profile_photo_path)
-                    <x-secondary-button type="button" class="mt-2 dark:bg-discord-300 dark:hover:bg-discord-200" wire:click="deleteProfilePhoto">
+                    <x-secondary-button type="button" class="mt-2 dark:bg-theme-d-300 dark:hover:bg-theme-d-200" wire:click="deleteProfilePhoto">
                         {{ __('Remove Photo') }}
                     </x-secondary-button>
                 @endif

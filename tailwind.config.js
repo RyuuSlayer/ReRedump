@@ -17,33 +17,16 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                discord: {
-                    'd-100': '#424549',  // Light
-                    'd-200': '#36393e',  // Light
+                theme: {
+                    'd-100': '#424549',  // Light dark
+                    'd-200': '#36393e',  // Medium dark
                     'd-300': '#282b30',  // Dark
                     'd-400': '#1e2124',  // Darkest
-                    'l-100': '#ffffff',
-                    'l-200': '#e6e6e6',
-                    'l-300': '#d9d9d9',
-                    'l-400': '#cccccc',
+                    'l-100': '#ffffff',  // Pure white
+                    'l-200': '#f0f0f0',  // Light gray (matches d-100 to d-200 step)
+                    'l-300': '#dedede',  // Medium gray (matches d-200 to d-300 step)
+                    'l-400': '#d0d0d0',  // Dark gray (matches d-300 to d-400 step)
                 },
-                ui: {
-                    border: '#d1d5db',     // gray-300
-                    text: {
-                        primary: '#374151', // gray-700
-                        secondary: '#6b7280', // gray-500
-                        light: '#9ca3af',   // gray-400
-                    },
-                    bg: {
-                        primary: '#f9fafb', // gray-50
-                        secondary: '#f3f4f6', // gray-100
-                    },
-                    accent: {
-                        DEFAULT: '#424549', // discord-d-100
-                        hover: '#36393e',   // discord-d-200
-                        focus: '#282b30',   // discord-d-300
-                    }
-                }
             },
         },
     },

@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Recent Dumps Section -->
-            <div class="bg-discord-l-100 dark:bg-discord-d-200 overflow-hidden shadow-xl sm:rounded-lg mb-6">
+            <div class="bg-theme-l-100 dark:bg-theme-d-200 overflow-hidden shadow-xl sm:rounded-lg mb-6">
                 <div class="p-6">
                     <h2 class="text-xl font-semibold mb-4 dark:text-white">Recent dumps</h2>
                     <div class="space-y-2">
@@ -24,7 +24,7 @@
             </div>
 
             <!-- News Section -->
-            <div class="bg-discord-l-100 dark:bg-discord-d-200 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-theme-l-100 dark:bg-theme-d-200 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6">
                     <h2 class="text-xl font-semibold mb-4 dark:text-white">News</h2>
                     <div class="space-y-4">

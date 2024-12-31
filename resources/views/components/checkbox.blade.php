@@ -1,1 +1,1 @@
-<input type="checkbox" {!! $attributes->merge(['class' => 'rounded dark:bg-discord-d-100 border-discord-l-300 dark:border-discord-d-300 text-discord-d-100 shadow-sm focus:ring-discord-d-100 dark:focus:ring-discord-d-100 dark:focus:ring-offset-discord-d-300']) !!}>
+<input type="checkbox" {!! $attributes->merge(['class' => 'rounded dark:bg-theme-d-100 border-theme-l-300 dark:border-theme-d-300 text-theme-d-100 shadow-sm focus:ring-theme-d-100 dark:focus:ring-theme-d-100 dark:focus:ring-offset-theme-d-300']) !!}>
