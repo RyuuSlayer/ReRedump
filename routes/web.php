@@ -17,29 +17,17 @@ Route::get('/', function () {
     return view('main');
 })->name('main');
 
-Route::get('/computer', function () {
-    return view('computer');
-})->name('computer');
+Route::get('/discs', function () {
+    return view('discs');
+})->name('discs');
 
-Route::get('/console', function () {
-    return view('console');
-})->name('console');
-
-Route::get('/misc', function () {
-    return view('misc');
-})->name('misc');
-
-Route::get('/nongame', function () {
-    return view('nongame');
-})->name('nongame');
+Route::get('/nongame-discs', function () {
+    return view('nongame-discs');
+})->name('nongame-discs');
 
 Route::get('/downloads', function () {
     return view('downloads');
 })->name('downloads');
-
-Route::get('/discs', function () {
-    return view('discs');
-})->name('discs');
 
 Route::middleware([
     'auth:sanctum',
@@ -47,6 +35,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('main');
     })->name('dashboard');
 });
