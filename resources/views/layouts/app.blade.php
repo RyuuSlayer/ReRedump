@@ -17,7 +17,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased bg-theme-d-300">
+    <body class="font-sans antialiased bg-theme-l-100 dark:bg-theme-d-300">
         <x-banner />
 
         <div class="min-h-screen">
@@ -25,7 +25,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-theme-d-200 shadow mb-2">
+                <header class="bg-theme-l-100 dark:bg-theme-d-200 shadow mb-2">
                     <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

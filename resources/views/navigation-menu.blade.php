@@ -15,7 +15,7 @@
                     <div class="relative inline-flex items-center" x-data="{ open: false, commodore: false, multimedia: false, nintendo: false, sega: false, sony: false, konami: false }" @mouseleave="open = false">
                         <button @mouseover="open = true" 
                                 @click="window.location.href='{{ route('discs') }}'"
-                                class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-300 hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-theme-l-300 dark:hover:border-theme-d-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-theme-l-300 dark:focus:border-theme-d-300 transition duration-150 ease-in-out">
                             {{ __('Game Discs') }}
                             <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />

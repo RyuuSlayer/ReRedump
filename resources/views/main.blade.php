@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 bg-theme-l-100 dark:bg-theme-d-300">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Recent Dumps Section -->
             <div class="bg-theme-l-100 dark:bg-theme-d-200 overflow-hidden shadow-xl sm:rounded-lg mb-6">
