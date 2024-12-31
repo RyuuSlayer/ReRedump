@@ -22,10 +22,10 @@ export default {
                     'd-200': '#36393e',  // Medium dark
                     'd-300': '#282b30',  // Dark
                     'd-400': '#1e2124',  // Darkest
-                    'l-100': '#ffffff',  // Pure white
-                    'l-200': '#f0f0f0',  // Light gray (matches d-100 to d-200 step)
-                    'l-300': '#dedede',  // Medium gray (matches d-200 to d-300 step)
-                    'l-400': '#d0d0d0',  // Dark gray (matches d-300 to d-400 step)
+                    'l-100': '#FBF9F1',  // Pure white
+                    'l-200': '#E3E1D9',  // Light gray (matches d-100 to d-200 step)
+                    'l-300': '#F2EFE5',  // Medium gray (matches d-200 to d-300 step)
+                    'l-400': '#F2EFE5',  // Dark gray (matches d-300 to d-400 step)
                 },
             },
         },
