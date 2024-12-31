@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-discord-400 border-b border-gray-100 dark:border-discord-400">
+<nav x-data="{ open: false }" class="bg-discord-l-100 dark:bg-discord-d-400 border-b border-discord-l-300 dark:border-discord-d-300">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -21,15 +21,15 @@
                     <x-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')">
                         {{ __('Downloads') }}
                     </x-nav-link>
-                    <a href="http://wiki.redump.org/index.php?title=Dumping_Guides" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-discord-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 dark:focus:border-discord-300 transition duration-150 ease-in-out" target="_blank" rel="noopener noreferrer">
+                    <x-nav-link href="http://wiki.redump.org/index.php?title=Dumping_Guides" target="_blank" rel="noopener noreferrer">
                         {{ __('Guide') }}
-                    </a>
-                    <a href="http://wiki.redump.org/index.php?title=Main_Page" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-discord-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 dark:focus:border-discord-300 transition duration-150 ease-in-out" target="_blank" rel="noopener noreferrer">
+                    </x-nav-link>
+                    <x-nav-link href="http://wiki.redump.org/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer">
                         {{ __('Wiki') }}
-                    </a>
-                    <a href="http://forum.redump.org/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-discord-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-gray-300 dark:focus:border-discord-300 transition duration-150 ease-in-out" target="_blank" rel="noopener noreferrer">
+                    </x-nav-link>
+                    <x-nav-link href="http://forum.redump.org/" target="_blank" rel="noopener noreferrer">
                         {{ __('Forum') }}
-                    </a>
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                                 <x-dropdown align="right" width="60">
                                     <x-slot name="trigger">
                                         <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:focus:bg-discord-500 active:bg-gray-50 dark:active:bg-discord-500 transition ease-in-out duration-150">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-discord-d-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:focus:bg-discord-d-500 active:bg-gray-50 dark:active:bg-discord-d-500 transition ease-in-out duration-150">
                                                 {{ Auth::user()->currentTeam->name }}
 
                                                 <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -76,7 +76,7 @@
 
                                         <!-- Team Switcher -->
                                         @if (Auth::user()->allTeams()->count() > 1)
-                                            <div class="border-t border-gray-200 dark:border-discord-400"></div>
+                                            <div class="border-t border-gray-200 dark:border-discord-d-400"></div>
 
                                             <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                                                 {{ __('Switch Teams') }}
@@ -96,12 +96,12 @@
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 dark:focus:border-discord-300 transition">
+                                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 dark:focus:border-discord-d-300 transition">
                                             <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                         </button>
                                     @else
                                         <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-discord-300 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:hover:bg-discord-200 dark:focus:bg-discord-200 active:bg-gray-50 dark:active:bg-discord-200 transition ease-in-out duration-150">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-discord-d-200 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:hover:bg-discord-d-100 dark:focus:bg-discord-d-100 active:bg-gray-50 dark:active:bg-discord-d-100 transition ease-in-out duration-150">
                                                 {{ Auth::user()->name }}
 
                                                 <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -128,7 +128,7 @@
                                         </x-dropdown-link>
                                     @endif
 
-                                    <div class="border-t border-gray-200 dark:border-discord-400"></div>
+                                    <div class="border-t border-gray-200 dark:border-discord-d-400"></div>
 
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}" x-data>
@@ -158,7 +158,7 @@
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-discord-400 focus:outline-none focus:bg-gray-100 dark:focus:bg-discord-400 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-discord-l-200 dark:hover:bg-discord-d-200 focus:outline-none focus:bg-discord-l-200 dark:focus:bg-discord-d-200 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -180,20 +180,20 @@
             <x-responsive-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')">
                 {{ __('Downloads') }}
             </x-responsive-nav-link>
-            <a href="http://wiki.redump.org/index.php?title=Dumping_Guides" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200" target="_blank" rel="noopener noreferrer">
+            <x-responsive-nav-link href="http://wiki.redump.org/index.php?title=Dumping_Guides" target="_blank" rel="noopener noreferrer">
                 {{ __('Guide') }}
-            </a>
-            <a href="http://wiki.redump.org/index.php?title=Main_Page" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200" target="_blank" rel="noopener noreferrer">
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="http://wiki.redump.org/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer">
                 {{ __('Wiki') }}
-            </a>
-            <a href="http://forum.redump.org/" class="block px-4 py-2 text-sm text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-discord-400 hover:text-gray-700 dark:hover:text-gray-200" target="_blank" rel="noopener noreferrer">
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="http://forum.redump.org/" target="_blank" rel="noopener noreferrer">
                 {{ __('Forum') }}
-            </a>
+            </x-responsive-nav-link>
         </div>
 
         @auth
             <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-discord-400">
+            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-discord-d-400">
                 <div class="flex items-center px-4">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <div class="shrink-0 me-3">
@@ -231,7 +231,7 @@
 
                     <!-- Team Management -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                        <div class="border-t border-gray-200 dark:border-discord-400"></div>
+                        <div class="border-t border-gray-200 dark:border-discord-d-400"></div>
 
                         <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                             {{ __('Manage Team') }}
@@ -250,7 +250,7 @@
 
                         <!-- Team Switcher -->
                         @if (Auth::user()->allTeams()->count() > 1)
-                            <div class="border-t border-gray-200 dark:border-discord-400"></div>
+                            <div class="border-t border-gray-200 dark:border-discord-d-400"></div>
 
                             <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                                 {{ __('Switch Teams') }}
@@ -264,7 +264,7 @@
                 </div>
             </div>
         @else
-            <div class="py-1 border-t border-gray-200 dark:border-discord-400">
+            <div class="py-1 border-t border-gray-200 dark:border-discord-d-400">
                 <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                     {{ __('Login') }}
                 </x-responsive-nav-link>

@@ -18,10 +18,14 @@ export default {
             },
             colors: {
                 discord: {
-                    100: '#424549',  // Lightest
-                    200: '#36393e',  // Light
-                    300: '#282b30',  // Dark
-                    400: '#1e2124',  // Darkest
+                    'd-100': '#424549',  // Light
+                    'd-200': '#36393e',  // Light
+                    'd-300': '#282b30',  // Dark
+                    'd-400': '#1e2124',  // Darkest
+                    'l-100': '#ffffff',
+                    'l-200': '#e6e6e6',
+                    'l-300': '#d9d9d9',
+                    'l-400': '#cccccc',
                 },
                 ui: {
                     border: '#d1d5db',     // gray-300
@@ -35,9 +39,9 @@ export default {
                         secondary: '#f3f4f6', // gray-100
                     },
                     accent: {
-                        DEFAULT: '#6366f1', // indigo-500
-                        hover: '#4f46e5',   // indigo-600
-                        focus: '#4338ca',   // indigo-700
+                        DEFAULT: '#424549', // discord-d-100
+                        hover: '#36393e',   // discord-d-200
+                        focus: '#282b30',   // discord-d-300
                     }
                 }
             },
@@ -45,5 +49,15 @@ export default {
     },
 
     darkMode: 'media',
-    plugins: [forms, typography],
+    plugins: [forms, typography, function({ addBase }) {
+        addBase({
+            '*': {
+                '&::-webkit-scrollbar': {
+                    display: 'none'
+                },
+                '-ms-overflow-style': 'none',
+                'scrollbar-width': 'none'
+            }
+        });
+    }],
 };
