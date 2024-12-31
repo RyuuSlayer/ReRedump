@@ -1,4 +1,4 @@
-# A cleanroom redump.org reimplementation using the 2009 source code
+# A reimplementation of redump.org using the 2009 source code
 
 # Project Setup
 
