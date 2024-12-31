@@ -12,23 +12,40 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('main') }}" :active="request()->routeIs('main')">
-                        {{ __('Main') }}
+                    <x-nav-link href="{{ route('computer') }}" :active="request()->routeIs('computer')">
+                        {{ __('Computer') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('discs') }}" :active="request()->routeIs('discs')">
-                        {{ __('Discs') }}
+                    <x-nav-link href="{{ route('console') }}" :active="request()->routeIs('console')">
+                        {{ __('Console/Handheld') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')">
-                        {{ __('Downloads') }}
+                    <x-nav-link href="{{ route('misc') }}" :active="request()->routeIs('misc')">
+                        {{ __('Misc') }}
                     </x-nav-link>
-                    <x-nav-link href="http://wiki.redump.org/index.php?title=Dumping_Guides" target="_blank" rel="noopener noreferrer">
-                        {{ __('Guide') }}
+                    <x-nav-link href="{{ route('nongame') }}" :active="request()->routeIs('nongame')">
+                        {{ __('NonGame') }}
                     </x-nav-link>
-                    <x-nav-link href="http://wiki.redump.org/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer">
-                        {{ __('Wiki') }}
+                    <div class="border-l border-gray-400 dark:border-gray-600 h-4 my-auto mx-3 opacity-50"></div>
+                    <x-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')" class="inline-flex items-center" title="{{ __('Downloads') }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
                     </x-nav-link>
-                    <x-nav-link href="http://forum.redump.org/" target="_blank" rel="noopener noreferrer">
-                        {{ __('Forum') }}
+                    <x-nav-link href="http://wiki.redump.org/index.php?title=Dumping_Guides" target="_blank" rel="noopener noreferrer" class="inline-flex items-center" title="{{ __('Dumping Guide') }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="8" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="2" stroke-width="2"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v2m0 12v2m-8-10h2m12 0h2"/>
+                        </svg>
+                    </x-nav-link>
+                    <x-nav-link href="http://wiki.redump.org/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer" class="inline-flex items-center" title="{{ __('Wiki') }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z"></path>
+                        </svg>
+                    </x-nav-link>
+                    <x-nav-link href="http://forum.redump.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center" title="{{ __('Forum') }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
                     </x-nav-link>
                 </div>
             </div>
@@ -171,29 +188,50 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('main') }}" :active="request()->routeIs('main')">
-                {{ __('Main') }}
+            <x-responsive-nav-link href="{{ route('computer') }}" :active="request()->routeIs('computer')">
+                {{ __('Computer') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('discs') }}" :active="request()->routeIs('discs')">
-                {{ __('Discs') }}
+            <x-responsive-nav-link href="{{ route('console') }}" :active="request()->routeIs('console')">
+                {{ __('Console/Handheld') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')">
+            <x-responsive-nav-link href="{{ route('misc') }}" :active="request()->routeIs('misc')">
+                {{ __('Misc') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('nongame') }}" :active="request()->routeIs('nongame')">
+                {{ __('NonGame') }}
+            </x-responsive-nav-link>
+            <div class="border-t border-gray-400 dark:border-gray-600 my-1"></div>
+            <x-responsive-nav-link href="{{ route('downloads') }}" :active="request()->routeIs('downloads')" class="inline-flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
                 {{ __('Downloads') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="http://wiki.redump.org/index.php?title=Dumping_Guides" target="_blank" rel="noopener noreferrer">
+            <x-responsive-nav-link href="http://wiki.redump.org/index.php?title=Dumping_Guides" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="8" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="2" stroke-width="2"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v2m0 12v2m-8-10h2m12 0h2"/>
+                </svg>
                 {{ __('Guide') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="http://wiki.redump.org/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer">
+            <x-responsive-nav-link href="http://wiki.redump.org/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z"></path>
+                </svg>
                 {{ __('Wiki') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="http://forum.redump.org/" target="_blank" rel="noopener noreferrer">
+            <x-responsive-nav-link href="http://forum.redump.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                </svg>
                 {{ __('Forum') }}
             </x-responsive-nav-link>
         </div>
 
         @auth
             <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-theme-d-400">
+            <div class="pt-4 pb-1 border-t border-gray-400 dark:border-gray-600">
                 <div class="flex items-center px-4">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <div class="shrink-0 me-3">
@@ -231,7 +269,7 @@
 
                     <!-- Team Management -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                        <div class="border-t border-gray-200 dark:border-theme-d-400"></div>
+                        <div class="border-t border-gray-400 dark:border-gray-600"></div>
 
                         <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                             {{ __('Manage Team') }}
@@ -250,7 +288,7 @@
 
                         <!-- Team Switcher -->
                         @if (Auth::user()->allTeams()->count() > 1)
-                            <div class="border-t border-gray-200 dark:border-theme-d-400"></div>
+                            <div class="border-t border-gray-400 dark:border-gray-600"></div>
 
                             <div class="block px-4 py-2 text-xs text-gray-400 dark:text-gray-300">
                                 {{ __('Switch Teams') }}
@@ -264,7 +302,7 @@
                 </div>
             </div>
         @else
-            <div class="py-1 border-t border-gray-200 dark:border-theme-d-400">
+            <div class="py-1 border-t border-gray-400 dark:border-gray-600">
                 <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                     {{ __('Login') }}
                 </x-responsive-nav-link>
