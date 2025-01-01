@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +39,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('main');
     })->name('dashboard');
+
+    // User Management Routes
+    Route::prefix('admin')->group(function () {
+        // Users - accessible by both admin and moderator
+        Route::resource('users', UserManagementController::class)->middleware(['role:admin|moderator']);
+        
+        // Roles - accessible only by admin
+        Route::resource('roles', RoleController::class)->middleware(['role:admin']);
+    });
 });
