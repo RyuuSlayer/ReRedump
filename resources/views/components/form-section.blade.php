@@ -7,7 +7,7 @@
     </x-section-title>
 
     <div class="mt-5 md:mt-0 md:col-span-2">
-        <div class="px-4 py-5 sm:p-6 bg-theme-l-100 dark:bg-theme-d-200 shadow sm:rounded-lg">
+        <div class="px-4 py-5 sm:p-6 bg-theme-l-200 dark:bg-theme-d-200 shadow sm:rounded-lg">
             <form wire:submit="{{ $submit }}">
                 <div class="px-4 py-5 sm:p-6 {{ isset($actions) ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md' }}">
                     <div class="grid grid-cols-6 gap-6">

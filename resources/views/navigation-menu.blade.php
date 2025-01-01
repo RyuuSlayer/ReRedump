@@ -13,14 +13,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 lg:-my-px lg:ms-10 lg:flex items-center">
                     <div class="relative inline-flex items-center" x-data="{ open: false, commodore: false, multimedia: false, nintendo: false, sega: false, sony: false, konami: false }" @mouseleave="open = false">
-                        <button @mouseover="open = true" 
-                                @click="window.location.href='{{ route('discs') }}'"
-                                class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-theme-l-300 dark:hover:border-theme-d-300 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200 focus:border-theme-l-300 dark:focus:border-theme-d-300 transition duration-150 ease-in-out">
+                        <x-nav-link href="{{ route('discs') }}" :active="request()->routeIs('discs')" @mouseover="open = true" class="inline-flex items-center">
                             {{ __('Game Discs') }}
                             <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
-                        </button>
+                        </x-nav-link>
                         
                         <!-- Main Dropdown -->
                         <div x-show="open"
@@ -30,8 +28,10 @@
                              x-transition:leave="transition ease-in duration-75"
                              x-transition:leave-start="transform opacity-100 scale-100"
                              x-transition:leave-end="transform opacity-0 scale-95"
-                             class="absolute left-0 top-full mt-px w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5"
+                             class="absolute left-0 top-full -mt-1 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5"
                              style="display: none;">
+                            <!-- Invisible hover bridge to prevent gap -->
+                            <div class="absolute top-0 h-2 -translate-y-full w-full"></div>
                             {{-- TODO: These menu items are placeholders and will need to be dynamically generated from the database.
                                      Each category and its subcategories should be pulled from the systems table with its relation to a manufacturer in the database.
                                      The current structure serves as a template for the dynamic menu generation. --}}
@@ -41,7 +41,7 @@
                                 <div class="relative" @mouseleave="commodore = false">
                                     <a @mouseover="commodore = true; multimedia = false; nintendo = false; sega = false; sony = false; konami = false" 
                                        href="#" 
-                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">
+                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">
                                         Commodore
                                         <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -49,11 +49,11 @@
                                     </a>
                                     <!-- Commodore Submenu -->
                                     <div x-show="commodore"
-                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
+                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
                                         <div class="py-1">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Amiga CD</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Amiga CDTV</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Amiga CD32</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Amiga CD</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Amiga CDTV</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Amiga CD32</a>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="relative" @mouseleave="multimedia = false">
                                     <a @mouseover="multimedia = true; commodore = false; nintendo = false; sega = false; sony = false; konami = false"
                                        href="#"
-                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">
+                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">
                                         Multimedia
                                         <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -70,11 +70,11 @@
                                     </a>
                                     <!-- Multimedia Submenu -->
                                     <div x-show="multimedia"
-                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
+                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
                                         <div class="py-1">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Video CD</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Audio CD</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">DVD-Video</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Video CD</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Audio CD</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">DVD-Video</a>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                 <div class="relative" @mouseleave="nintendo = false">
                                     <a @mouseover="nintendo = true; commodore = false; multimedia = false; sega = false; sony = false; konami = false"
                                        href="#"
-                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">
+                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">
                                         Nintendo
                                         <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -91,11 +91,11 @@
                                     </a>
                                     <!-- Nintendo Submenu -->
                                     <div x-show="nintendo"
-                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
+                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
                                         <div class="py-1">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Gamecube</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Wii</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Wii-U</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Gamecube</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Wii</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Wii-U</a>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                                 <div class="relative" @mouseleave="sega = false">
                                     <a @mouseover="sega = true; commodore = false; multimedia = false; nintendo = false; sony = false; konami = false"
                                        href="#"
-                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">
+                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">
                                         Sega
                                         <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -112,11 +112,11 @@
                                     </a>
                                     <!-- Sega Submenu -->
                                     <div x-show="sega"
-                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
+                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
                                         <div class="py-1">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Dreamcast</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Sega CD / Mega CD</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Saturn</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Dreamcast</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Sega CD / Mega CD</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Saturn</a>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                                 <div class="relative" @mouseleave="sony = false">
                                     <a @mouseover="sony = true; commodore = false; multimedia = false; nintendo = false; sega = false; konami = false"
                                        href="#"
-                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">
+                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">
                                         Sony
                                         <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -133,13 +133,13 @@
                                     </a>
                                     <!-- Sony Submenu -->
                                     <div x-show="sony"
-                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
+                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
                                         <div class="py-1">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">PlayStation</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">PlayStation 2</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">PlayStation 3</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">PlayStation 4</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">PlayStation Portable</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">PlayStation</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">PlayStation 2</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">PlayStation 3</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">PlayStation 4</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">PlayStation Portable</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                                 <div class="relative" @mouseleave="konami = false">
                                     <a @mouseover="konami = true; commodore = false; multimedia = false; nintendo = false; sega = false; sony = false"
                                        href="#"
-                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">
+                                       class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">
                                         Konami
                                         <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -156,10 +156,10 @@
                                     </a>
                                     <!-- Konami Submenu -->
                                     <div x-show="konami"
-                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-white dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
+                                         class="absolute left-full top-0 w-48 rounded-md shadow-lg bg-theme-l-100 dark:bg-theme-d-200 ring-1 ring-black ring-opacity-5">
                                         <div class="py-1">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">Firebeat</a>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-100 dark:hover:bg-theme-d-300">M2</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">Firebeat</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-theme-l-200 dark:hover:bg-theme-d-300">M2</a>
                                         </div>
                                     </div>
                                 </div>
@@ -258,12 +258,12 @@
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 dark:focus:border-theme-d-300 transition">
+                                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-theme-l-300 dark:focus:border-theme-d-300 transition">
                                             <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                         </button>
                                     @else
                                         <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-white dark:bg-theme-d-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-50 dark:hover:bg-theme-d-300 dark:focus:bg-theme-d-300 active:bg-gray-50 dark:active:bg-theme-d-300 transition ease-in-out duration-150">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-300 bg-theme-l-100 dark:bg-theme-d-200 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-theme-l-200 dark:hover:bg-theme-d-100 focus:outline-none focus:bg-theme-l-200 dark:focus:bg-theme-d-100 active:bg-theme-l-300 dark:active:bg-theme-d-300 transition ease-in-out duration-150">
                                                 {{ Auth::user()->name }}
 
                                                 <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

@@ -1,12 +1,12 @@
 <div class="bg-theme-l-100 dark:bg-theme-d-400">
-    <div class="bg-theme-l-300 dark:bg-theme-d-200 overflow-hidden rounded-lg p-4">
+    <div class="bg-theme-l-200 dark:bg-theme-d-200 overflow-hidden rounded-lg p-4">
         <!-- Search Bar -->
         <div class="flex gap-2 mb-6">
             <input type="text" 
                    placeholder="Search..." 
                    class="flex-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded-md px-3 py-1.5 border-none focus:ring-2 focus:ring-indigo-500">
-            <button class="px-3 py-1.5 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded-lg hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Filters</button>
-            <button class="px-3 py-1.5 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded-lg hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Reset</button>
+            <button class="px-3 py-1.5 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded-lg hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Filters</button>
+            <button class="px-3 py-1.5 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded-lg hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Reset</button>
         </div>
 
         <!-- Filter Options -->
@@ -15,10 +15,10 @@
             <div>
                 <label class="text-sm text-gray-600 dark:text-gray-400 mb-2 block">Starts with:</label>
                 <div class="flex flex-wrap gap-1">
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">All</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">~</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">All</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">~</button>
                     @foreach (range('A', 'Z') as $letter)
-                        <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">{{ $letter }}</button>
+                        <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">{{ $letter }}</button>
                     @endforeach
                 </div>
             </div>
@@ -27,12 +27,12 @@
             <div>
                 <label class="text-sm text-gray-600 dark:text-gray-400 mb-2 block">Region:</label>
                 <div class="flex flex-wrap gap-1">
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">All</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Twins</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">World</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Europe</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">America</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Asia</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">All</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Dual Region</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">World</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Europe</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">America</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Asia</button>
                 </div>
             </div>
 
@@ -40,15 +40,15 @@
             <div>
                 <label class="text-sm text-gray-600 dark:text-gray-400 mb-2 block">Status:</label>
                 <div class="flex flex-wrap gap-1">
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                         <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-1"></span>
                         Verified
                     </button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                         <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mr-1"></span>
                         Needs Review
                     </button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                         <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>
                         Issue Found
                     </button>
@@ -59,10 +59,10 @@
             <div>
                 <label class="text-sm text-gray-600 dark:text-gray-400 mb-2 block">Sort by:</label>
                 <div class="flex flex-wrap gap-1">
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Added: Asc</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Added: Desc</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Modified: Asc</button>
-                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">Modified: Desc</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Added: Asc</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Added: Desc</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Modified: Asc</button>
+                    <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">Modified: Desc</button>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-theme-l-400 dark:divide-theme-d-100">
-                    <tr class="hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                    <tr class="hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                         <td class="px-2 py-1 whitespace-nowrap">
                             <img src="/images/regions/EU.svg" alt="Europe" class="h-4 w-6">
                         </td>
@@ -158,7 +158,7 @@
                         </td>
                     </tr>
 
-                    <tr class="hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                    <tr class="hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                         <td class="px-2 py-1 whitespace-nowrap">
                             <img src="/images/regions/JP.svg" alt="Japan" class="h-4 w-6">
                         </td>
@@ -180,7 +180,7 @@
                         </td>
                     </tr>
 
-                    <tr class="hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                    <tr class="hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                         <td class="px-2 py-1 whitespace-nowrap">
                             <img src="/images/regions/US.svg" alt="USA" class="h-4 w-6">
                         </td>
@@ -220,18 +220,18 @@
                 <span class="text-gray-600 dark:text-gray-400">per page</span>
             </div>
             <nav class="flex gap-1">
-                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                     <span class="sr-only">Previous</span>
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                 </button>
-                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">1</button>
-                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">2</button>
-                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">3</button>
+                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">1</button>
+                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">2</button>
+                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">3</button>
                 <span class="px-2 py-1 text-gray-900 dark:text-white">...</span>
-                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">10</button>
-                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-250">
+                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">10</button>
+                <button class="px-2 py-1 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
                     <span class="sr-only">Next</span>
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
