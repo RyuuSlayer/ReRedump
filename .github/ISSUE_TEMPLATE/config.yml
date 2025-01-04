@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ReRedump Documentation
+    url: https://github.com/RyuuSlayer/ReRedump/wiki
+    about: Check our documentation for answers to common questions
+  - name: Security Issue
+    url: https://github.com/RyuuSlayer/ReRedump/security/policy
+    about: Please report security vulnerabilities directly to the team
