@@ -11,12 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // First create roles and permissions
-        $this->call(RoleAndPermissionSeeder::class);
-
-        // Development environment only: create dev users and assign roles
-        if (app()->environment() !== 'production') {
-            $this->call(DevEnvironmentSeeder::class);
-        }
+        // Create roles, permissions and admin user
+        $this->call(AdminPermissionsSeeder::class);
     }
 }

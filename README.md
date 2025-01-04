@@ -48,7 +48,7 @@
 7. Set up the application:
     ```sh
     php artisan key:generate
-    php artisan migrate
+    php artisan migrate --seed
     ```
 
 8. Start the development servers:
@@ -62,22 +62,27 @@
 
 Now you can access the application at `http://localhost:8000`. Any changes to CSS or JavaScript will automatically reload in your browser.
 
+## Initial Login
+
+After setting up the application, you can log in with the default admin account:
+- Email: `admin@reredump.com`
+- Password: `password`
+
+**Important**: Make sure to change the admin password after your first login for security purposes.
+
 ## Additional Commands
 
 - Clear the application cache:
-
     ```sh
     php artisan optimize:clear
     ```
 
-- Refresh the database:
-
+- Refresh the database with fresh seed data:
     ```sh
-    php artisan migrate:fresh
+    php artisan migrate:fresh --seed
     ```
 
 - Watch for changes and automatically refresh CSS:
-
     ```sh
     npm run dev
     ```

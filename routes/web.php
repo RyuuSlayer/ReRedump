@@ -41,11 +41,11 @@ Route::middleware([
     })->name('dashboard');
 
     // User Management Routes
-    Route::prefix('admin')->group(function () {
-        // Users - accessible by both admin and moderator
-        Route::resource('users', UserManagementController::class)->middleware(['role:admin|moderator']);
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        // Users - accessible based on permissions
+        Route::resource('users', UserManagementController::class);
         
-        // Roles - accessible only by admin
-        Route::resource('roles', RoleController::class)->middleware(['role:admin']);
+        // Roles - accessible based on permissions
+        Route::resource('roles', RoleController::class);
     });
 });
