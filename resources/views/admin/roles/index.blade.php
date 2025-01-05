@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Role Management') }}
             </h2>
-            @can('create roles')
+            @can('create_roles')
             <a href="{{ route('admin.roles.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Create Role
             </a>
@@ -43,16 +43,18 @@
                                         @endforeach
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    @can('edit roles')
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    @can('edit_roles')
                                     <a href="{{ route('admin.roles.edit', $role) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
                                     @endcan
-                                    @can('delete roles')
-                                    <form action="{{ route('admin.roles.destroy', $role) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to delete this role?')">Delete</button>
-                                    </form>
+                                    @can('delete_roles')
+                                        @if(!in_array($role->name, ['admin', 'moderator']))
+                                            <form action="{{ route('admin.roles.destroy', $role) }}" method="POST" class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to delete this role?')">Delete</button>
+                                            </form>
+                                        @endif
                                     @endcan
                                 </td>
                             </tr>

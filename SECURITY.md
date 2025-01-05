@@ -15,9 +15,9 @@ We take the security of ReRedump seriously. If you believe you have found a secu
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to:
-- Primary: security@reredump.org
-- Secondary: admin@reredump.com
+Instead, please report them via email or discord message to:
+- Primary: security@reredump.org (Not currently setup)
+- Secondary: https://discord.gg/Yg9WfGKFJr (Notify one of the admins)
 
 You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
 

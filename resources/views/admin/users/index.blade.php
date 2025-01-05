@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('User Management') }}
             </h2>
-            @can('create users')
+            @can('create_users')
             <a href="{{ route('admin.users.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Create User
             </a>
@@ -28,6 +28,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roles</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Permissions</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                             </tr>
                         </thead>
@@ -45,16 +46,38 @@
                                         @endforeach
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    @can('edit users')
-                                    <a href="{{ route('admin.users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                                <td class="px-6 py-4">
+                                    @if($user->has_custom_permissions || $user->has_system_permissions)
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                            Custom Permissions
+                                        </span>
+                                    @else
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                            Role-based
+                                        </span>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    @can('edit_users')
+                                        <a href="{{ route('admin.users.permissions.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                                            {{ __('Permissions') }}
+                                        </a>
+                                        @if(auth()->user()->hasRole('admin') || (!$user->hasRole('admin') && !$user->hasRole('moderator')))
+                                            <a href="{{ route('admin.users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                                                {{ __('Edit') }}
+                                            </a>
+                                        @endif
                                     @endcan
-                                    @can('delete users')
-                                    <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                    </form>
+                                    @can('delete_users')
+                                        @if($user->id !== auth()->id())
+                                            <form class="inline-block" method="POST" action="{{ route('admin.users.destroy', $user) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                    {{ __('Delete') }}
+                                                </button>
+                                            </form>
+                                        @endif
                                     @endcan
                                 </td>
                             </tr>

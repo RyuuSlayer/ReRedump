@@ -8,6 +8,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules;
 
 class UserManagementController extends Controller
@@ -17,21 +18,37 @@ class UserManagementController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('permission:view users')->only(['index']);
-        $this->middleware('permission:create users')->only(['create', 'store']);
-        $this->middleware('permission:edit users')->only(['edit', 'update']);
-        $this->middleware('permission:delete users')->only(['destroy']);
+        $this->middleware('permission:view_users')->only(['index']);
+        $this->middleware('permission:create_users')->only(['create', 'store']);
+        $this->middleware('permission:edit_users')->only(['edit', 'update']);
+        $this->middleware('permission:delete_users')->only(['destroy']);
     }
 
     public function index()
     {
-        // Debug information
-        $user = auth()->user();
-        Log::info('User Roles:', ['roles' => $user->roles->pluck('name')]);
-        Log::info('Has admin role:', ['isAdmin' => $user->hasRole('admin')]);
-        Log::info('All roles:', ['roles' => Role::all()->pluck('name')]);
+        // Get all users with their roles and check for custom permissions
+        $users = User::with('roles')
+            ->withCount(['permissions as has_custom_permissions' => function($query) {
+                $query->whereNotIn('permissions.id', function($q) {
+                    $q->select('permission_id')
+                      ->from('role_has_permissions')
+                      ->join('model_has_roles', 'role_has_permissions.role_id', '=', 'model_has_roles.role_id')
+                      ->whereColumn('model_has_roles.model_id', 'users.id');
+                })
+                ->where(function($q) {
+                    $q->where('name', 'like', 'submit_%')
+                      ->orWhere('name', 'like', 'approve_%');
+                });
+            }])
+            ->withCount(['systemPermissions as has_system_permissions' => function($query) {
+                $query->join('permissions', 'system_permissions.permission_id', '=', 'permissions.id')
+                      ->where(function($q) {
+                          $q->where('permissions.name', 'like', 'submit_%')
+                            ->orWhere('permissions.name', 'like', 'approve_%');
+                      });
+            }])
+            ->paginate(10);
 
-        $users = User::with('roles')->paginate(10);
         return view('admin.users.index', compact('users'));
     }
 

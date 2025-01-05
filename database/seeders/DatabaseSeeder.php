@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,7 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create roles, permissions and admin user
-        $this->call(AdminPermissionsSeeder::class);
+        Schema::disableForeignKeyConstraints();
+        
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+            SystemsSeeder::class,
+            AdminPermissionsSeeder::class,
+        ]);
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

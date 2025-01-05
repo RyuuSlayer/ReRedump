@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -60,4 +61,52 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the system-specific permissions for the user.
+     */
+    public function systemPermissions(): HasMany
+    {
+        return $this->hasMany(SystemPermission::class);
+    }
+
+    /**
+     * Check if user has permission for a specific system
+     */
+    public function hasSystemPermission(string $permission, ?int $systemId = null): bool
+    {
+        // Check for all-systems permission first
+        if ($this->hasPermissionTo($permission . '_all')) {
+            return true;
+        }
+
+        // If no system specified, only allow if user has all-systems permission
+        if ($systemId === null) {
+            return false;
+        }
+
+        // Check for system-specific permission
+        return $this->permissions()
+            ->join('system_permissions', 'permissions.id', '=', 'system_permissions.permission_id')
+            ->where('permissions.name', $permission)
+            ->where('system_permissions.system_id', $systemId)
+            ->exists();
+    }
+
+    /**
+     * Grant system-specific permission to user
+     */
+    public function giveSystemPermission(string $permission, int $systemId): void
+    {
+        $perm = Permission::firstOrCreate(['name' => $permission]);
+        
+        \DB::table('system_permissions')->insertOrIgnore([
+            'permission_id' => $perm->id,
+            'system_id' => $systemId,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $this->permissions()->syncWithoutDetaching([$perm->id]);
+    }
 }

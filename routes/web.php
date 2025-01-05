@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserPermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,12 +41,21 @@ Route::middleware([
         return view('main');
     })->name('dashboard');
 
-    // User Management Routes
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-        // Users - accessible based on permissions
+    // Admin Routes
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin|moderator']], function () {
+        // Users Management
         Route::resource('users', UserManagementController::class);
         
-        // Roles - accessible based on permissions
+        // User Permissions Management
+        Route::get('users/{user}/permissions', [UserPermissionController::class, 'edit'])
+            ->name('users.permissions.edit')
+            ->middleware('can:edit_users');
+            
+        Route::put('users/{user}/permissions', [UserPermissionController::class, 'update'])
+            ->name('users.permissions.update')
+            ->middleware('can:edit_users');
+        
+        // Roles Management
         Route::resource('roles', RoleController::class);
     });
 });
