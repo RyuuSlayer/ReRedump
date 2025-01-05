@@ -7,101 +7,82 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 bg-theme-l-100 dark:bg-theme-d-300">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-theme-l-200 dark:bg-theme-d-200 overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="p-6">
                     @if (session('success'))
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                            <span class="block sm:inline">{{ session('success') }}</span>
+                        <div class="mb-6 bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded relative" role="alert">
+                            {{ session('success') }}
                         </div>
                     @endif
 
                     @if (session('error'))
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                            <span class="block sm:inline">{{ session('error') }}</span>
+                        <div class="mb-6 bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-300 px-4 py-3 rounded relative" role="alert">
+                            {{ session('error') }}
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('admin.users.permissions.update', $user) }}" class="space-y-8">
+                    <form method="POST" action="{{ route('admin.users.permissions.update', $user) }}">
                         @csrf
                         @method('PUT')
 
-                        <div class="space-y-6">
-                            <!-- Disc Management Permissions -->
+                        <div class="space-y-8">
+                            <!-- Disc Management Section -->
                             <div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-4">{{ __('Disc Management') }}</h3>
-
-                                <!-- Global Permissions Section -->
-                                <div class="mb-8">
-                                    <h4 class="text-md font-medium text-gray-700 mb-4">Global Permissions</h4>
-                                    <div class="space-y-4">
+                                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Disc Management</h3>
+                                
+                                <!-- Global Permissions -->
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-4">{{ __('Global Permissions') }}</h4>
+                                    <div class="space-y-3">
                                         @foreach($groupedPermissions as $basePermission => $group)
-                                            <div class="flex items-start">
-                                                <div class="flex items-center h-5">
-                                                    <input type="checkbox"
-                                                        name="permissions[]"
-                                                        value="{{ $group['all']['permission']->name }}"
-                                                        id="{{ $group['all']['permission']->name }}"
-                                                        {{ $group['all']['checked'] ? 'checked' : '' }}
-                                                        class="permission-checkbox focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                                                        data-base-permission="{{ $basePermission }}">
-                                                </div>
-                                                <div class="ml-3 text-sm">
-                                                    <label for="{{ $group['all']['permission']->name }}" class="font-medium text-gray-700">
-                                                        {{ $group['all']['label'] }}
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" 
+                                                    id="permission_{{ $group['all']['permission']->name }}" 
+                                                    name="permissions[]" 
+                                                    value="{{ $group['all']['permission']->name }}"
+                                                    {{ $group['all']['checked'] ? 'checked' : '' }}
+                                                    class="rounded bg-white dark:bg-theme-d-100 border-gray-300 dark:border-theme-d-300 text-theme-d-100 dark:text-theme-d-100 shadow-sm focus:ring-theme-d-100 dark:focus:ring-theme-d-100 dark:focus:ring-offset-theme-d-300">
+                                                <span class="ms-2 text-gray-600 dark:text-gray-400">{{ $group['all']['label'] }}</span>
+                                            </label>
                                         @endforeach
                                     </div>
                                 </div>
 
-                                <!-- System-Specific Permissions Section -->
+                                <!-- System-Specific Permissions -->
                                 <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-4">System-Specific Permissions</h4>
-                                    <div class="space-y-6">
-                                        @foreach($groupedPermissions as $basePermission => $group)
-                                            <div class="border-t border-gray-200 pt-4">
-                                                <h5 class="text-sm font-medium text-gray-900 mb-3">{{ $group['specific']['label'] }}</h5>
-                                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                                                    @foreach($systems as $system)
-                                                        <div class="flex items-start">
-                                                            <div class="flex items-center h-5">
-                                                                <input type="checkbox"
-                                                                    name="system_permissions[{{ $system->id }}][]"
-                                                                    value="{{ $group['specific']['permission']->id }}"
-                                                                    id="{{ $group['specific']['permission']->name }}_system_{{ $system->id }}"
-                                                                    {{ isset($userSystemPermissions[$group['specific']['permission']->id]) && in_array($system->id, $userSystemPermissions[$group['specific']['permission']->id]) ? 'checked' : '' }}
-                                                                    class="system-checkbox focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                                                                    data-base-permission="{{ $basePermission }}" 
-                                                                    data-system-id="{{ $system->id }}"
-                                                                    {{ $group['all']['checked'] ? 'disabled' : '' }}>
-                                                            </div>
-                                                            <div class="ml-3 text-sm">
-                                                                <label for="{{ $group['specific']['permission']->name }}_system_{{ $system->id }}" class="text-gray-700">
-                                                                    {{ $system->name }}
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
+                                    <h4 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-4">{{ __('System-Specific Permissions') }}</h4>
+
+                                    @foreach($groupedPermissions as $basePermission => $group)
+                                        <div class="mb-6">
+                                            <h5 class="text-md font-medium text-gray-600 dark:text-gray-400 mb-3">{{ $group['specific']['label'] }}</h5>
+                                            <div class="mt-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                @foreach($systems as $system)
+                                                    <label class="flex items-center">
+                                                        <input type="checkbox" 
+                                                            id="permission_{{ $group['specific']['permission']->name }}_{{ $system->id }}" 
+                                                            name="system_permissions[{{ $system->id }}][]" 
+                                                            value="{{ $group['specific']['permission']->id }}"
+                                                            {{ isset($userSystemPermissions[$group['specific']['permission']->id]) && in_array($system->id, $userSystemPermissions[$group['specific']['permission']->id]) ? 'checked' : '' }}
+                                                            class="rounded bg-white dark:bg-theme-d-100 border-gray-300 dark:border-theme-d-300 text-theme-d-100 dark:text-theme-d-100 shadow-sm focus:ring-theme-d-100 dark:focus:ring-theme-d-100 dark:focus:ring-offset-theme-d-300">
+                                                        <span class="ms-2 text-gray-600 dark:text-gray-400">{{ $system->name }}</span>
+                                                    </label>
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
 
-                        <div class="pt-5">
-                            <div class="flex justify-end">
-                                <a href="{{ route('admin.users.index') }}" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    {{ __('Cancel') }}
-                                </a>
-                                <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    {{ __('Save Changes') }}
-                                </button>
-                            </div>
+                        <div class="flex items-center justify-end mt-6 space-x-3">
+                            <a href="{{ route('admin.users.index') }}" class="px-3 py-1.5 bg-theme-l-100 dark:bg-theme-d-100 text-gray-900 dark:text-white rounded-lg hover:bg-theme-l-400 dark:hover:bg-theme-d-300">
+                                {{ __('Cancel') }}
+                            </a>
+                            <button type="submit" class="px-3 py-1.5 bg-white dark:bg-gray-200 text-gray-900 dark:text-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-white">
+                                {{ __('Save Changes') }}
+                            </button>
                         </div>
                     </form>
                 </div>
